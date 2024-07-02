@@ -17,7 +17,8 @@ import javax.swing.JPopupMenu;
 public class MyFrame extends JFrame implements ActionListener{
     JButton algorithmSelector;
     JPopupMenu menu;
-
+    JButton resetArray;
+    ArrayCreater arrayPanel;
 
     MyFrame(){
         // RESET BUTTON
@@ -26,7 +27,7 @@ public class MyFrame extends JFrame implements ActionListener{
         Image resizedImage = image.getScaledInstance(15, 15, Image.SCALE_SMOOTH);
         ImageIcon resizedIcon = new ImageIcon(resizedImage);
 
-        JButton resetArray = new JButton();
+        resetArray = new JButton();
         resetArray.setBounds(25, 10, 100, 30);
         resetArray.setText("Reset");
         resetArray.setFocusable(false);
@@ -37,6 +38,7 @@ public class MyFrame extends JFrame implements ActionListener{
         resetArray.setFont(new Font("Comic Sans", Font.BOLD, 12));
         resetArray.setBackground(Color.LIGHT_GRAY);
         resetArray.setBorder(BorderFactory.createRaisedBevelBorder());
+        resetArray.addActionListener(this);
 
         //Algorithm Chooser
         menu = new JPopupMenu("Algorithm");
@@ -87,26 +89,35 @@ public class MyFrame extends JFrame implements ActionListener{
         header.add(algorithmSelector);
         header.add(runProgram);
 
+        //Array panel
+        arrayPanel = new ArrayCreater();
+        arrayPanel.setBounds(0, 50, 600, 450);
+        //arrayPanel.setSize(getPreferredSize());
 
         // FRAME
         this.setTitle("Algorithm Visiualizer");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(null);
         this.setResizable(false);
-        this.setSize(614, 500);
+        this.setSize(614, 537);
         this.setVisible(true);
         this.add(header);
+        this.add(arrayPanel);
 
         ImageIcon logo = new ImageIcon("assests\\Logo.jpg");
         this.setIconImage(logo.getImage());
         
-        this.getContentPane().setBackground(Color.black);
+        this.getContentPane().setBackground(Color.white);
 
     }
         @Override
         public void actionPerformed(ActionEvent e){
             if(e.getSource()==algorithmSelector){
                 menu.show(algorithmSelector, 0, 0);
+            }
+            if(e.getSource()==resetArray){
+                arrayPanel.shuffle();
+                arrayPanel.resetColours();
             }
         }
 }
