@@ -19,6 +19,11 @@ public class MyFrame extends JFrame implements ActionListener{
     JPopupMenu menu;
     JButton resetArray;
     ArrayCreater arrayPanel;
+    String algorithmName = "Insertion Sort";
+    JMenuItem item1;
+    JMenuItem item2;
+    JMenuItem item3;
+    JButton runProgram;
 
     MyFrame(){
         // RESET BUTTON
@@ -43,14 +48,17 @@ public class MyFrame extends JFrame implements ActionListener{
         //Algorithm Chooser
         menu = new JPopupMenu("Algorithm");
 
-        JMenuItem item1 = new JMenuItem("Insertion Sort");
-        JMenuItem item2 = new JMenuItem("Selection Sort");
-        JMenuItem item3 = new JMenuItem("Merge Sort");
+        item1 = new JMenuItem("Insertion Sort");
+        item2 = new JMenuItem("Selection Sort");
+        item3 = new JMenuItem("Merge Sort");
         menu.add(item1);
         menu.add(item2);
         menu.add(item3);
         menu.setPopupSize(200,100);
         menu.setFont(new Font("Comic Sans", Font.BOLD, 15));
+        item1.addActionListener(this);
+        item2.addActionListener(this);
+        item3.addActionListener(this);
         
         algorithmSelector = new JButton();
         algorithmSelector.setBounds(375, 10, 200, 30);
@@ -67,9 +75,9 @@ public class MyFrame extends JFrame implements ActionListener{
         Image runImage = runProgramIcon.getImage();
         Image resizedRunImage = runImage.getScaledInstance(15, 15, Image.SCALE_SMOOTH);
         ImageIcon resizedRunIcon = new ImageIcon(resizedRunImage);
-        JButton runProgram = new JButton();
+        runProgram = new JButton();
         runProgram.setBounds(150, 10, 200, 30);
-        runProgram.setText("Run: " + "Insertion Sort");
+        runProgram.setText("Run: " + algorithmName);
         runProgram.setFocusable(false);
         runProgram.setIcon(resizedRunIcon);
         runProgram.setVerticalTextPosition(JButton.BOTTOM);
@@ -115,9 +123,21 @@ public class MyFrame extends JFrame implements ActionListener{
             if(e.getSource()==algorithmSelector){
                 menu.show(algorithmSelector, 0, 0);
             }
-            if(e.getSource()==resetArray){
+            else if(e.getSource()==resetArray){
                 arrayPanel.shuffle();
                 arrayPanel.resetColours();
+            }
+            else if(e.getSource() == item1){
+                algorithmName = "Insertion Sort";
+                runProgram.setText("Run: " + algorithmName);
+            }
+            else if(e.getSource() == item2){
+                algorithmName = "Selection Sort";
+                runProgram.setText("Run: " + algorithmName);
+            }
+            else if(e.getSource() == item3){
+                algorithmName = "Merge Sort";
+                runProgram.setText("Run: " + algorithmName);
             }
         }
 }
