@@ -43,6 +43,8 @@ public class ArrayCreater extends JPanel {
         repaint();
         
         time.sleepFor(time.millisecondsToNano(milliSecDelay));
+
+        resetColours();
     }
     
     public void updateSingle(int index, int value, long millisecondDelay) {

@@ -128,8 +128,6 @@ public class MyFrame extends JFrame implements ActionListener{
             }
             else if(e.getSource()==resetArray){
                 arrayPanel.shuffle();
-                arrayPanel.repaint();
-                arrayPanel.resetColours();
             }
             else if(e.getSource() == item1){
                 algorithmName = "Insertion Sort";
