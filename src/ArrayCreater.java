@@ -10,7 +10,7 @@ public class ArrayCreater extends JPanel {
     private final int panelheight = 450;
     private final int barWidth = 5;
     private final int numBar = panelWidth/barWidth;
-    private Sleep time = new Sleep();
+    private static Sleep time = new Sleep();
     private int[] array;
     private int[] barColours;
 
@@ -41,6 +41,7 @@ public class ArrayCreater extends JPanel {
         barColours[secondIndex] = 100;
         
         repaint();
+        
         time.sleepFor(time.millisecondsToNano(milliSecDelay));
     }
     

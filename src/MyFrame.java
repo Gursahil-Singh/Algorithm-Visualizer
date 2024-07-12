@@ -24,6 +24,8 @@ public class MyFrame extends JFrame implements ActionListener{
     JMenuItem item2;
     JMenuItem item3;
     JButton runProgram;
+    Algorithm insertionAlg = new Insertion();
+    Algorithm currAlgorithm = insertionAlg;
 
     MyFrame(){
         // RESET BUTTON
@@ -86,6 +88,7 @@ public class MyFrame extends JFrame implements ActionListener{
         runProgram.setFont(new Font("Comic Sans", Font.BOLD, 12));
         runProgram.setBackground(Color.LIGHT_GRAY);
         runProgram.setBorder(BorderFactory.createRaisedBevelBorder());
+        runProgram.addActionListener(this);
 
 
         // HEADER 
@@ -125,11 +128,13 @@ public class MyFrame extends JFrame implements ActionListener{
             }
             else if(e.getSource()==resetArray){
                 arrayPanel.shuffle();
+                arrayPanel.repaint();
                 arrayPanel.resetColours();
             }
             else if(e.getSource() == item1){
                 algorithmName = "Insertion Sort";
                 runProgram.setText("Run: " + algorithmName);
+                currAlgorithm = insertionAlg;
             }
             else if(e.getSource() == item2){
                 algorithmName = "Selection Sort";
@@ -138,6 +143,10 @@ public class MyFrame extends JFrame implements ActionListener{
             else if(e.getSource() == item3){
                 algorithmName = "Merge Sort";
                 runProgram.setText("Run: " + algorithmName);
+            }
+            else if(e.getSource() == runProgram){
+                currAlgorithm.runSort(arrayPanel);
+                arrayPanel.resetColours();
             }
         }
 }

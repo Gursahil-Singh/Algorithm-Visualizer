@@ -4,6 +4,6 @@ public class Main {
         
         MyFrame frame = new MyFrame();
         frame.setVisible(true);//pointless line :)
-
+        
     }
 }
