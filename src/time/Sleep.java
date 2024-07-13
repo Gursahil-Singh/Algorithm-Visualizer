@@ -1,5 +1,8 @@
+package time;
+
+
 public class Sleep {
-    public void sleepFor(long nanoseconds) {
+    public static void sleepFor(long nanoseconds) {
         long timeElapsed;
         final long startTime = System.nanoTime();
         do {
@@ -7,15 +10,15 @@ public class Sleep {
         } while(timeElapsed < nanoseconds);
     }
     
-    public long secondsToNano(long time) {
+    public static long secondsToNano(long time) {
         return time * (long)Math.pow(10, 9);
     }
     
-    public long millisecondsToNano(long time) {
+    public static long millisecondsToNano(long time) {
         return time * (long)Math.pow(10, 6); 
     }
     
-    public long microsecondsToNano(long time) {
+    public static long microsecondsToNano(long time) {
         return time * (long)Math.pow(10, 3); 
-    }   
+    }
 }

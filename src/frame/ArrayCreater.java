@@ -1,3 +1,5 @@
+package frame;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -5,12 +7,15 @@ import java.awt.Graphics2D;
 import java.util.Random;
 import javax.swing.JPanel;
 
+import static time.Sleep.millisecondsToNano;
+import static time.Sleep.sleepFor;
+
+
 public class ArrayCreater extends JPanel {
     private final int panelWidth = 600;
     private final int panelheight = 450;
     private final int barWidth = 5;
     private final int numBar = panelWidth/barWidth;
-    private static Sleep time = new Sleep();
     private int[] array;
     private int[] barColours;
 
@@ -42,7 +47,7 @@ public class ArrayCreater extends JPanel {
         
         repaint();
         
-        time.sleepFor(time.millisecondsToNano(milliSecDelay));
+        sleepFor(millisecondsToNano(milliSecDelay));
 
         resetColours();
     }
@@ -51,7 +56,7 @@ public class ArrayCreater extends JPanel {
         array[index] = value;
         barColours[index] = 100;
         repaint();
-        time.sleepFor(time.millisecondsToNano(millisecondDelay));
+        sleepFor(millisecondsToNano(millisecondDelay));
     }
     
     public void shuffle() {

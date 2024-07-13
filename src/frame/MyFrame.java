@@ -1,3 +1,5 @@
+package frame;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -10,6 +12,9 @@ import javax.swing.JFrame;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
+
+import frame.algorithms.Algorithm;
+import frame.algorithms.Insertion;
 
 
 
@@ -27,7 +32,7 @@ public class MyFrame extends JFrame implements ActionListener{
     Algorithm insertionAlg = new Insertion();
     Algorithm currAlgorithm = insertionAlg;
 
-    MyFrame(){
+    public MyFrame(){
         // RESET BUTTON
         ImageIcon resetArrayIcon = new ImageIcon("assests\\Reset.png");
         Image image = resetArrayIcon.getImage();
@@ -146,5 +151,11 @@ public class MyFrame extends JFrame implements ActionListener{
                 currAlgorithm.runSort(arrayPanel);
                 arrayPanel.resetColours();
             }
+        }
+        public static void main(String... args) {
+        
+            MyFrame frame = new MyFrame();
+            frame.setVisible(true);//pointless line :)
+            
         }
 }
