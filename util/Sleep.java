@@ -1,4 +1,4 @@
-package time;
+package util;
 
 
 public class Sleep {

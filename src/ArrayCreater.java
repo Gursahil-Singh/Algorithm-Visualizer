@@ -1,4 +1,4 @@
-package frame;
+
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -7,9 +7,8 @@ import java.awt.Graphics2D;
 import java.util.Random;
 import javax.swing.JPanel;
 
-import static time.Sleep.millisecondsToNano;
-import static time.Sleep.sleepFor;
-
+import static util.Sleep.sleepFor;
+import static util.Sleep.millisecondsToNano;
 
 public class ArrayCreater extends JPanel {
     private final int panelWidth = 600;

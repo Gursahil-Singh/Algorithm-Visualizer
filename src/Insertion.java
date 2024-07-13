@@ -1,5 +1,5 @@
-package frame.algorithms;
-import frame.ArrayCreater;
+
+
 public class Insertion extends Algorithm {
     @Override
     public void runSort(ArrayCreater array){

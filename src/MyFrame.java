@@ -1,4 +1,3 @@
-package frame;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -12,9 +11,6 @@ import javax.swing.JFrame;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
-
-import frame.algorithms.Algorithm;
-import frame.algorithms.Insertion;
 
 
 
@@ -152,10 +148,5 @@ public class MyFrame extends JFrame implements ActionListener{
                 arrayPanel.resetColours();
             }
         }
-        public static void main(String... args) {
         
-            MyFrame frame = new MyFrame();
-            frame.setVisible(true);//pointless line :)
-            
-        }
 }

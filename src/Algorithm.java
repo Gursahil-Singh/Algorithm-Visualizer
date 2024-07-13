@@ -1,5 +1,3 @@
-package frame.algorithms;
-import frame.ArrayCreater;
 
 
 public class Algorithm {
