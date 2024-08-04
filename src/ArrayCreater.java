@@ -6,9 +6,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.Random;
 import javax.swing.JPanel;
-
-import static util.Sleep.sleepFor;
-import static util.Sleep.millisecondsToNano;
+import java.lang.InterruptedException;
 
 public class ArrayCreater extends JPanel {
     private final int panelWidth = 600;
@@ -45,9 +43,12 @@ public class ArrayCreater extends JPanel {
         barColours[secondIndex] = 100;
         
         repaint();
+        update(getGraphics());
+
         
         sleepFor(millisecondsToNano(milliSecDelay));
-
+        
+        
         resetColours();
     }
     
@@ -55,6 +56,7 @@ public class ArrayCreater extends JPanel {
         array[index] = value;
         barColours[index] = 100;
         repaint();
+        update(getGraphics());
         sleepFor(millisecondsToNano(millisecondDelay));
     }
     
@@ -62,7 +64,7 @@ public class ArrayCreater extends JPanel {
         Random rng = new Random();
         for (int i = 0; i < arraySize(); i++) {
             int swapWithIndex = rng.nextInt(arraySize() - 1);
-            swap(i, swapWithIndex, 5);
+            swap(i, swapWithIndex, 5);       
         }
     }
     
@@ -104,4 +106,29 @@ public class ArrayCreater extends JPanel {
             }
         }
     }
+
+    private void sleepFor(long nanoSec){
+        
+        long milliseconds = nanoSec / 1000000;
+        long remainingNanoseconds = nanoSec % 1000000;
+    
+        try {
+            Thread.sleep(milliseconds, (int)remainingNanoseconds); 
+        } catch (InterruptedException e) {
+            System.out.println("Thread was interrupted");
+        }
+    }
+
+    public static long secondsToNano(long time) {
+        return time * (long)Math.pow(10, 9);
+    }
+    
+    public static long millisecondsToNano(long time) {
+        return time * (long)Math.pow(10, 6); 
+    }
+    
+    public static long microsecondsToNano(long time) {
+        return time * (long)Math.pow(10, 3); 
+    }
+
 }
