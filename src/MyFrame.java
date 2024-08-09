@@ -124,33 +124,36 @@ public class MyFrame extends JFrame implements ActionListener{
         this.getContentPane().setBackground(Color.white);
 
     }
-        @Override
-        public void actionPerformed(ActionEvent e){
-            if(e.getSource()==algorithmSelector){
-                menu.show(algorithmSelector, 0, 0);
-            }
-            else if(e.getSource()==resetArray){
-                arrayPanel.shuffle();
-            }
-            else if(e.getSource() == item1){
-                algorithmName = "Insertion Sort";
-                runProgram.setText("Run: " + algorithmName);
-                currAlgorithm = insertionAlg;
-            }
-            else if(e.getSource() == item2){
-                algorithmName = "Selection Sort";
-                runProgram.setText("Run: " + algorithmName);
-                currAlgorithm = selectionAlg;
-            }
-            else if(e.getSource() == item3){
-                algorithmName = "Merge Sort";
-                runProgram.setText("Run: " + algorithmName);
-                currAlgorithm = mergeAlg;
-            }
-            else if(e.getSource() == runProgram){
-                currAlgorithm.runSort(arrayPanel);
-                arrayPanel.resetColours();
-            }
+    @Override
+    public void actionPerformed(ActionEvent e){
+        if(e.getSource()==algorithmSelector){
+            menu.show(algorithmSelector, 0, 0);
         }
-        
+        else if(e.getSource()==resetArray){
+            arrayPanel.shuffle();
+        }
+        else if(e.getSource() == item1){
+            algorithmName = "Insertion Sort";
+            runProgram.setText("Run: " + algorithmName);
+            currAlgorithm = insertionAlg;
+        }
+        else if(e.getSource() == item2){
+            algorithmName = "Selection Sort";
+            runProgram.setText("Run: " + algorithmName);
+            currAlgorithm = selectionAlg;
+        }
+        else if(e.getSource() == item3){
+            algorithmName = "Merge Sort";
+            runProgram.setText("Run: " + algorithmName);
+            currAlgorithm = mergeAlg;
+        }
+        else if(e.getSource() == runProgram){
+            currAlgorithm.runSort(arrayPanel);
+            arrayPanel.resetColours();
+        }
+    }
+
+    public static void main(String[] args) { 
+        new MyFrame();
+    }
 }

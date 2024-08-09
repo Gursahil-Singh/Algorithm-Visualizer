@@ -68,12 +68,6 @@ public class ArrayCreater extends JPanel {
         }
     }
     
-    public void highlightArray() {
-        for (int i = 0; i < arraySize(); i++) {
-            updateSingle(i, getValue(i), 5);
-        }
-    }
-
     @Override
     public Dimension getPreferredSize() {
         return new Dimension(panelWidth, panelheight);

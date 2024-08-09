@@ -1,5 +1,5 @@
 
 
-public class Algorithm {
+public abstract class Algorithm {
     public void runSort(ArrayCreater array){}
 }
