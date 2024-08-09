@@ -4,7 +4,6 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -23,74 +22,38 @@ public class MyFrame extends JFrame implements ActionListener{
     String algorithmName = "Insertion Sort";
     JMenuItem item1;
     JMenuItem item2;
-    JMenuItem item3;
+    JMenuItem item3 ;
     JButton runProgram;
     Algorithm insertionAlg = new Insertion();
     Algorithm currAlgorithm = insertionAlg;
     Algorithm selectionAlg = new Selection();
     Algorithm mergeAlg = new Merge();
+    
 
     public MyFrame(){
         // RESET BUTTON
-        ImageIcon resetArrayIcon = new ImageIcon("assests\\Reset.png");
-        Image image = resetArrayIcon.getImage();
-        Image resizedImage = image.getScaledInstance(15, 15, Image.SCALE_SMOOTH);
-        ImageIcon resizedIcon = new ImageIcon(resizedImage);
-
-        resetArray = new JButton();
+        ImageIcon resizedIcon = imageResizer("assests\\Reset.png");
+        resetArray = new MyButton();
         resetArray.setBounds(25, 10, 100, 30);
         resetArray.setText("Reset");
-        resetArray.setFocusable(false);
         resetArray.setIcon(resizedIcon);
-        resetArray.setVerticalTextPosition(JButton.BOTTOM);
-        resetArray.setHorizontalTextPosition(JButton.CENTER);
-        resetArray.setIconTextGap(-4);
-        resetArray.setFont(new Font("Comic Sans", Font.BOLD, 12));
-        resetArray.setBackground(Color.LIGHT_GRAY);
-        resetArray.setBorder(BorderFactory.createRaisedBevelBorder());
         resetArray.addActionListener(this);
 
-        //Algorithm Chooser
-        menu = new JPopupMenu("Algorithm");
 
-        item1 = new JMenuItem("Insertion Sort");
-        item2 = new JMenuItem("Selection Sort");
-        item3 = new JMenuItem("Merge Sort");
-        menu.add(item1);
-        menu.add(item2);
-        menu.add(item3);
-        menu.setPopupSize(200,100);
-        menu.setFont(new Font("Comic Sans", Font.BOLD, 15));
-        item1.addActionListener(this);
-        item2.addActionListener(this);
-        item3.addActionListener(this);
-        
-        algorithmSelector = new JButton();
+        //Algorithm Chooser
+        createMenu();
+        algorithmSelector = new MyButton();
         algorithmSelector.setBounds(375, 10, 200, 30);
         algorithmSelector.setText("Select Algorithm");
-        algorithmSelector.setFocusable(false);
-        algorithmSelector.setFont(new Font("Comic Sans", Font.BOLD, 12));
-        algorithmSelector.setBackground(Color.LIGHT_GRAY);
-        algorithmSelector.setBorder(BorderFactory.createRaisedBevelBorder());
         algorithmSelector.addActionListener(this);
        
 
         // Run Button
-        ImageIcon runProgramIcon = new ImageIcon("assests\\run.png");
-        Image runImage = runProgramIcon.getImage();
-        Image resizedRunImage = runImage.getScaledInstance(15, 15, Image.SCALE_SMOOTH);
-        ImageIcon resizedRunIcon = new ImageIcon(resizedRunImage);
-        runProgram = new JButton();
+        ImageIcon resizedRunIcon = imageResizer("assests\\run.png");
+        runProgram = new MyButton();
         runProgram.setBounds(150, 10, 200, 30);
         runProgram.setText("Run: " + algorithmName);
-        runProgram.setFocusable(false);
         runProgram.setIcon(resizedRunIcon);
-        runProgram.setVerticalTextPosition(JButton.BOTTOM);
-        runProgram.setHorizontalTextPosition(JButton.CENTER);
-        runProgram.setIconTextGap(-4);
-        runProgram.setFont(new Font("Comic Sans", Font.BOLD, 12));
-        runProgram.setBackground(Color.LIGHT_GRAY);
-        runProgram.setBorder(BorderFactory.createRaisedBevelBorder());
         runProgram.addActionListener(this);
 
 
@@ -106,7 +69,6 @@ public class MyFrame extends JFrame implements ActionListener{
         //Array panel
         arrayPanel = new ArrayCreater();
         arrayPanel.setBounds(0, 50, 600, 450);
-        //arrayPanel.setSize(getPreferredSize());
 
         // FRAME
         this.setTitle("Algorithm Visiualizer");
@@ -117,13 +79,16 @@ public class MyFrame extends JFrame implements ActionListener{
         this.setVisible(true);
         this.add(header);
         this.add(arrayPanel);
-
         ImageIcon logo = new ImageIcon("assests\\Logo.jpg");
         this.setIconImage(logo.getImage());
-        
         this.getContentPane().setBackground(Color.white);
 
     }
+
+    public static void main(String[] args) { 
+        new MyFrame();
+    }
+
     @Override
     public void actionPerformed(ActionEvent e){
         if(e.getSource()==algorithmSelector){
@@ -153,7 +118,25 @@ public class MyFrame extends JFrame implements ActionListener{
         }
     }
 
-    public static void main(String[] args) { 
-        new MyFrame();
+    private ImageIcon imageResizer(String file){
+        ImageIcon img = new ImageIcon(file);
+        Image image = img.getImage();
+        Image resizedImg = image.getScaledInstance(15, 15, Image.SCALE_SMOOTH);
+        return new ImageIcon(resizedImg);
     }
+
+    private void createMenu(){
+        menu = new JPopupMenu("Algorithm");
+        item1 = new JMenuItem("Insertion Sort");
+        item2 = new JMenuItem("Selection Sort");
+        item3 = new JMenuItem("Merge Sort");
+        menu.add(item1);
+        menu.add(item2);
+        menu.add(item3);
+        menu.setPopupSize(200,100);
+        menu.setFont(new Font("Comic Sans", Font.BOLD, 15));
+        item1.addActionListener(this);
+        item2.addActionListener(this);
+        item3.addActionListener(this);
+    } 
 }
