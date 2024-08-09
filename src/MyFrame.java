@@ -27,6 +27,8 @@ public class MyFrame extends JFrame implements ActionListener{
     JButton runProgram;
     Algorithm insertionAlg = new Insertion();
     Algorithm currAlgorithm = insertionAlg;
+    Algorithm selectionAlg = new Selection();
+    Algorithm mergeAlg = new Merge();
 
     public MyFrame(){
         // RESET BUTTON
@@ -138,10 +140,12 @@ public class MyFrame extends JFrame implements ActionListener{
             else if(e.getSource() == item2){
                 algorithmName = "Selection Sort";
                 runProgram.setText("Run: " + algorithmName);
+                currAlgorithm = selectionAlg;
             }
             else if(e.getSource() == item3){
                 algorithmName = "Merge Sort";
                 runProgram.setText("Run: " + algorithmName);
+                currAlgorithm = mergeAlg;
             }
             else if(e.getSource() == runProgram){
                 currAlgorithm.runSort(arrayPanel);
