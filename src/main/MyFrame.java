@@ -1,3 +1,4 @@
+package main;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -10,6 +11,14 @@ import javax.swing.JFrame;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
+
+import algorithm.Algorithm;
+import algorithm.Bubble;
+import algorithm.Insertion;
+import algorithm.Merge;
+import algorithm.Quick;
+import algorithm.Selection;
+import algorithm.Shell;
 
 
 

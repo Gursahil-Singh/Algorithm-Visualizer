@@ -1,3 +1,6 @@
+package algorithm;
+import main.ArrayCreater;
+
 public class Shell extends Algorithm {
     @Override
     public void runSort(ArrayCreater array){

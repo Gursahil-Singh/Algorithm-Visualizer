@@ -1,4 +1,5 @@
-
+package algorithm;
+import main.ArrayCreater;
 
 public class Insertion extends Algorithm {
     @Override

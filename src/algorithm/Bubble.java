@@ -1,3 +1,6 @@
+package algorithm;
+import main.ArrayCreater;
+
 public class Bubble extends Algorithm  {
 
     public void runSort(ArrayCreater array){

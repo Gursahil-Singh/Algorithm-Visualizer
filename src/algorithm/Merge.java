@@ -1,3 +1,6 @@
+package algorithm;
+import main.ArrayCreater;
+
 public class Merge extends Algorithm{
     private long getDelay = 10;
 
