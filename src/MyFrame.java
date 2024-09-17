@@ -25,6 +25,7 @@ public class MyFrame extends JFrame implements ActionListener{
     JMenuItem item3;
     JMenuItem item4;
     JMenuItem item5;
+    JMenuItem item6;
     JButton runProgram;
     Algorithm insertionAlg = new Insertion();
     Algorithm currAlgorithm = insertionAlg;
@@ -32,6 +33,7 @@ public class MyFrame extends JFrame implements ActionListener{
     Algorithm mergeAlg = new Merge();
     Algorithm bubbleAlg = new Bubble();
     Algorithm quickAlg = new Quick();
+    Algorithm shellAlg = new Shell();
 
     public MyFrame(){
         // RESET BUTTON
@@ -125,6 +127,11 @@ public class MyFrame extends JFrame implements ActionListener{
             runProgram.setText("Run: " + algorithmName);
             currAlgorithm = quickAlg;
         }
+        else if(e.getSource() == item6){
+            algorithmName = "Shell Sort";
+            runProgram.setText("Run: " + algorithmName);
+            currAlgorithm = shellAlg;
+        }
         else if(e.getSource() == runProgram){
             currAlgorithm.runSort(arrayPanel);
             arrayPanel.resetColours();
@@ -145,11 +152,13 @@ public class MyFrame extends JFrame implements ActionListener{
         item3 = new JMenuItem("Merge Sort");
         item4 = new JMenuItem("Bubble Sort");
         item5 = new JMenuItem("Quick Sort");
+        item6 = new JMenuItem("Shell Sort");
         menu.add(item1);
         menu.add(item2);
         menu.add(item3);
         menu.add(item4);
         menu.add(item5);
+        menu.add(item6);
         menu.setPopupSize(200,100);
         menu.setFont(new Font("Comic Sans", Font.BOLD, 15));
         item1.addActionListener(this);
@@ -157,5 +166,6 @@ public class MyFrame extends JFrame implements ActionListener{
         item3.addActionListener(this);
         item4.addActionListener(this);
         item5.addActionListener(this);
+        item6.addActionListener(this);
     } 
 }
